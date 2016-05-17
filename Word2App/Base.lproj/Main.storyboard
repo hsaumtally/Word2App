@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Reveal View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SWRevealViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,9 +19,135 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="2jW-12-zdV" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="LuD-KM-e1p"/>
+                        <segue destination="8n2-Zz-4nd" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="gdY-gC-xWT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="273" y="368"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="9WZ-Ht-kJs">
+            <objects>
+                <viewController id="X4B-9M-hfn" customClass="DetailViewController" customModule="Word2App" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="S1e-iC-8f6"/>
+                        <viewControllerLayoutGuide type="bottom" id="NcI-ae-zpZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QHI-Iy-IVP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MY2-Po-62E">
+                                <rect key="frame" x="20" y="64" width="560" height="536"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MY2-Po-62E" firstAttribute="trailing" secondItem="QHI-Iy-IVP" secondAttribute="trailingMargin" id="3mX-2x-TmR"/>
+                            <constraint firstItem="NcI-ae-zpZ" firstAttribute="top" secondItem="MY2-Po-62E" secondAttribute="bottom" id="Chw-YD-WzI"/>
+                            <constraint firstItem="MY2-Po-62E" firstAttribute="leading" secondItem="QHI-Iy-IVP" secondAttribute="leadingMargin" id="baV-aZ-VOP"/>
+                            <constraint firstItem="MY2-Po-62E" firstAttribute="top" secondItem="S1e-iC-8f6" secondAttribute="bottom" id="xOj-nv-1cP"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="8id-IM-qX7">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="HqI-op-23N"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="menuButton" destination="HqI-op-23N" id="02P-tR-lAi"/>
+                        <outlet property="webView" destination="MY2-Po-62E" id="fhJ-k6-frD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NQY-jA-uHm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2494" y="176"/>
+        </scene>
+        <!--Master View Controller-->
+        <scene sceneID="peB-Tk-uYO">
+            <objects>
+                <viewController id="2jW-12-zdV" customClass="MasterViewController" customModule="Word2App" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qgo-eA-SCw"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZKX-5y-oHd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aWi-BN-2ch">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6SJ-3J-UxL">
+                                <rect key="frame" x="20" y="20" width="560" height="560"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="aya-7m-2sd" customClass="ChapterCell" customModule="Word2App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aya-7m-2sd" id="gdP-QE-szH">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buS-cx-fh0">
+                                                    <rect key="frame" x="8" y="11" width="552" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="chapterName" destination="buS-cx-fh0" id="aAI-IF-jqG"/>
+                                            <segue destination="8n2-Zz-4nd" kind="custom" identifier="showDetail" customClass="SWRevealViewControllerSeguePushController" id="rmG-2f-uJV"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="2jW-12-zdV" id="50z-FB-trW"/>
+                                    <outlet property="delegate" destination="2jW-12-zdV" id="8zH-1M-QRD"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6SJ-3J-UxL" firstAttribute="top" secondItem="Qgo-eA-SCw" secondAttribute="bottom" id="384-oP-Qdz"/>
+                            <constraint firstItem="6SJ-3J-UxL" firstAttribute="trailing" secondItem="aWi-BN-2ch" secondAttribute="trailingMargin" id="A0M-Qy-Qwn"/>
+                            <constraint firstItem="ZKX-5y-oHd" firstAttribute="top" secondItem="6SJ-3J-UxL" secondAttribute="bottom" constant="20" id="hLI-d1-SOs"/>
+                            <constraint firstItem="6SJ-3J-UxL" firstAttribute="leading" secondItem="aWi-BN-2ch" secondAttribute="leadingMargin" id="y93-ss-Dq9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="6SJ-3J-UxL" id="InM-iy-Fnc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B3k-N0-N8O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1080" y="1200"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3A0-KS-igQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8n2-Zz-4nd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ISL-TU-laD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.59607843137254901" green="0.41176470588235292" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="X4B-9M-hfn" kind="relationship" relationship="rootViewController" id="phe-5C-qvP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DqF-7F-0xm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1732" y="124"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu" width="22" height="22"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="rmG-2f-uJV"/>
+    </inferredMetricsTieBreakers>
 </document>
