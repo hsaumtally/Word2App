@@ -32,7 +32,7 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
     
             self.title = titleFromSummary
                 
-            let localfilePath = NSBundle.mainBundle().URLForResource(titleFromSummary, withExtension: "htm");
+            let localfilePath = NSBundle.mainBundle().URLForResource(titleFromSummary, withExtension: "htm", subdirectory: "HTML Files");
             print(titleFromSummary)
             print (localfilePath)
             let myRequest = NSURLRequest(URL: localfilePath!);
